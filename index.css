@@ -1,0 +1,47 @@
+/* CSS YO */
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body {
+	font-family: "Raleway";
+}
+
+.body-div {
+	max-width: 30%;
+	margin: auto;
+	margin-bottom: 30px;
+}
+
+/* collapsibles */
+.collapse-header {
+	display:block;
+}
+
+/* Title Stuff */
+.title-image {
+	display: block;
+	margin: auto;
+	border-radius: 50%;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+.title-text {
+	font-size: 250%;
+	text-align: center;
+	margin: auto;
+	margin-bottom: 10px;
+}
+.title-subtext {
+	font-size: 150%;
+	margin: auto;
+}
+
+.twitter-timeline {
+}
+
+.container-header {
+	display: flex;
+}
+.item-header {
+	margin: auto;
+}
