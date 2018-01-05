@@ -4,25 +4,58 @@
   <head>
     <link rel="stylesheet" type="text/css" href="index.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        $(".collapse-div .collapse-button").click(function() {
+
+          var nextele = $(this).next();
+
+          if (nextele.css("display") == "none") {
+            nextele.show("slow");
+          }
+          else {
+            nextele.hide("slow");
+          }
+
+        })
+      })
+    </script>
   </head>
 
   <body>
-    <!-- Header -->
-    <div class="body-div">
+
+    <!-- Main -->
+    <div class="main">
+
+      <a></a>
+
       <img src="icon.jpg" class="title-image">
-      <p class="title-text"> Hey, I'm J. Fox </p>
-      <p class="title-subtext"> I like making cool things. I started learning programming a year ago to help me do that. Let me show you what I've been working on! </p>
-    </div>
+      <a></a> 
+      <p class="title-text"> Hey, I'm J. Fox! </p>
+      <a></a>
+      <p class="title-subtext"> I want to build cool things, and I'm learning programming to help me do that. Keep reading to see what I've worked on! </p>
+      <a></a>
+      <a></a>
+      <!-- Twitter Timeline -->
+      <div>
+        <a class="twitter-timeline" href="https://twitter.com/jfox6cs?ref_src=twsrc%5Etfw" data-height="400"> Tweets by jfox6cs </a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+      </div>
 
-    <!-- Twitter Timeline -->
-    <div class="body-div">
-      <a class="twitter-timeline" href="https://twitter.com/jfox6cs?ref_src=twsrc%5Etfw">Tweets by jfox6cs</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-    </div>
 
-    <div class="collapse-header">
-      This is the header
-    </div>
+      <div class=collapse-div>
+        <a class="collapse-button"> Click this to test </a>
+        <div class="collapse-content">
+          <p> I am not hidden !! </p>
+        </div>
 
+    </div>
+    
+    <a></a>
+    <a></a>
+    <a></a>
 </div>
   </body>
 
