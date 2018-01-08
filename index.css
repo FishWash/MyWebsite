@@ -34,11 +34,6 @@ body {
 }
 
 /* collapsibles */
-.collapse-div {
-	border-bottom: 1px solid #ccc;
-}
-.collapse-content {
-}
 .collapse-button { 
 	display: block;
 	margin: auto;
@@ -49,6 +44,9 @@ body {
 	color: white;
 	text-align: center;
 	font-size: 150%;
+}
+.collapse-content {
+	display: none;
 }
 
 /* Title Stuff */
@@ -68,9 +66,8 @@ body {
 	margin: auto;
 }
 
-/* Twitter timeline */
 .twitter-timeline {
-	height = 100%;
+
 }
 
 .container-header {
