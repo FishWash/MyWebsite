@@ -30,20 +30,23 @@ body {
 }
 .main > a {
 	display: block;
-	height: 10px;
+	height: 10px;	
 }
 
-/* collapsibles */
+/* Collapsibles */
 .collapse-button { 
 	display: block;
 	margin: auto;
 	margin: 2%	;
-	background-color: orange;
+	background-color: darkorange;
 	border-radius: 10px;
 	cursor: pointer;
 	color: white;
 	text-align: center;
 	font-size: 150%;
+}
+.collapse-button:hover {
+	background-color: lightorange;
 }
 .collapse-content {
 	display: none;

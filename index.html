@@ -14,9 +14,11 @@
           var nextele = $(this).next();
 
           if (nextele.css("display") == "none") {
+          	$(this).css("background-color", "orange");
             nextele.show("fast");
           }
           else {
+          	$(this).css("background-color", "darkorange");
             nextele.hide("fast");
           }
 
@@ -39,22 +41,37 @@
       <p class="title-subtext"> I want to build cool things, and I'm learning programming to help me do that. Keep reading to see what I've worked on! </p>
       <a></a>
       <a></a>
+      <a></a>
       <!-- Twitter Timeline -->
       <div>
         <a class="twitter-timeline" href="https://twitter.com/jfox6cs?ref_src=twsrc%5Etfw" data-height="400"> Tweets by jfox6cs </a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
       </div>
 
-      <a class="collapse-button"> Click to E X P A N D </a>
-      <div class="collapse-content">
-        <p> Hello i have expunded </p>
-      </div>
+      <a></a>
+      <p class="title-text"> My Projects </p>
+      <a></a>
 
+      <div class=collapse-div>
+
+        <a class="collapse-button"> Duckoman (Unity) </a>
+        <div class="collapse-content">
+          <p> Duckoman is a Unity game that I built and released in Fall 2017. It's a platformer with simple, understandable mechanics and only one level. It gave me the experience of building a game from start to finish, and it was how I got started in Unity. </p>
+        </div>
+
+      </div>
+      <div class=collapse-div>
+
+        <a class="collapse-button"> Skate Duck (GameMaker) </a>
+        <div class="collapse-content">
+          <p> Skate Duck is the first game I ever really worked on. It features simple pixel art graphics, 8-bit chiptune music, and janky physics. </p>
+        </div>
+
+      </div>
+      
+      <a></a>
+      <a></a>
+      <a></a>
     </div>
-    
-    <a></a>
-    <a></a>
-    <a></a>
-</div>
-  </body>
+	</body>
 
 </html>
