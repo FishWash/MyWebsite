@@ -8,14 +8,19 @@ body {
 	background-color: orange;
 }
 @media only screen and (min-width: 768px) {
-	.main {
-		width: 50%;
-	}
+
 }
 
 .main {
 	margin: auto;
 	background-color: white;
+	max-width: 700px;
+}
+.game {
+	margin: auto;
+	background-color: white;
+	max-width: 1000px;
+	padding: 20px;
 }
 
 .main > * {
@@ -31,9 +36,19 @@ body {
 }
 .main > div > * {
 }
-.main > a {
+
+/* Dividers */
+.divider-s {
 	display: block;
-	height: 10px;	
+	height: 10px;
+}
+.divider-m {
+	display: block;
+	height: 20px;
+}
+.divider-l {
+	display: block;
+	height: 40px;
 }
 
 /* Collapsibles */
@@ -56,6 +71,23 @@ body {
 }
 .collapse-content {
 	display: none;
+	padding: 10px 0px 10px 0px;
+}
+
+/* Text */
+.bold {
+	font-weight: bold;
+}
+.medium {
+	font-size: 100%;
+}
+.small {
+	font-size: 80%;
+}
+img {
+	display:block;
+	margin: 10px 0px 10px 0px;
+	width: 100%;
 }
 
 /* Title Stuff */

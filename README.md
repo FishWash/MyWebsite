@@ -1,1 +1,1 @@
-# [Visit the website here!](fishwash.github.io/jfox-website)
+# [Visit the website here!](https://fishwash.github.io/jfox-website/)
