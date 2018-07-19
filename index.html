@@ -29,20 +29,48 @@
 
   <body>
 
+    <a class="divider-l"></a>
+
+    <!-- Nav Bar -->
+    <div class="navbar">
+      <a class="navbar-button" href="#top">Top</a>
+      <a class="navbar-button" href="#experience">Experience</a>
+      <a class="navbar-button" href="#projects">Projects</a>
+      <a class="navbar-button" href="#skills-education">Skills & Education</a>
+      <a class="navbar-button" href="#contact"> Contact Me </a>
+    </div>
+
     <!-- Main -->
     <div class="main">
 
-      <a class="divider-l"></a>
+      <a class="divider-l" name="top"></a>
 
       <p class="title-text"> Hey, I'm J. Fox! </p>
       <a class="divider-s"></a>
-      <img src="me.png" class="title-image">
-      <a class="divider-s"></a>
-      <p class="title-subtext"> I want to build cool things, and I'm learning programming to help me do that. Keep reading to see what I've worked on! </p>
+      <!-- <img src="me.png" class="title-image"> -->
+      <img src=professional-pic-2-square.jpg class="title-image">
+      <a class="divider-m"></a>
+      <p class="title-subtext"> I'm into building cool things, and programming is helping me do that. Keep reading to see what I've worked on! </p>
 
-      <a class=divider-l></a>
+      <!-- Experience -->
+      <a class=divider-l name="experience"></a>
+      <p class="subtitle-text"> Experience </p>
+      <a class=divider-s></a>
+
+      <div class=collapse-div>
+        <a class="collapse-button"> Internships </a>
+        <div class="collapse-content">
+          <p> 
+            <a class="bold"> Olixus Inc. </a> 
+            <a class= "small">(Summer 2017) </a>
+          </p>
+          <p> Interned at Olixus during Summer 2017. I worked on the JITS app, which provides just-in-time services for small businesses and customers. </p>
+          <p> Worked with a team of five other interns. My work was mainly focused on development of the JITS Android app. </p>
+        </div>
+      </div>
 
       <!-- Projects -->
+      <a class=divider-l name="projects"></a>
       <p class="subtitle-text"> Projects </p>
       <a class="divider-s"></a>
 
@@ -66,82 +94,75 @@
       </div>
 
       <!-- Twitter Timeline -->
-      <div>
+      <!--<div>
         <a class="twitter-timeline" href="https://twitter.com/jfox6cs?ref_src=twsrc%5Etfw" data-height="400"> Tweets by jfox6cs </a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-      </div>
+      </div>-->
 
-      <a class=divider-l></a>
-
-      <!-- Experience -->
-      <p class="subtitle-text"> Experience </p>
-      <a class=divider-s></a>
-
-      <div class=collapse-div>
-        <a class="collapse-button"> Internships </a>
-        <div class="collapse-content">
-        	<p> 
-        		<a class="bold"> Olixus Inc. </a> 
-        		<a class= "small">(Summer 2017) </a>
-        	</p>
-          <p> - I interned at Olixus during Summer 2017. I worked on the JITS app, which provides just-in-time services for small businesses and customers. </p>
-          <p> - I worked with a team of five other interns. My work was mainly focused on the Android version of the app. </p>
-        </div>
-      </div>
-
-      <a class=divider-l></a>
 
       <!-- Education -->
+      <a class=divider-l name="skills-education"></a>
       <p class="subtitle-text"> Skills & Education </p>
       <a class=divider-s></a>
 
       <div class=collapse-div>
 
       	<a class="collapse-button"> Skills </a>
-
       	<div class="collapse-content">	
 
-  				<p class="bold"> Languages </p>
-  				<p> - Java, C#, C++, Python, HTML, CSS </p>
+  				<p class="bold"> Languages and Environments </p>
+  				<p> Java, C#, C++, Python, HTML, CSS, Unity, Android Studio, GameMaker Studio </p>
 
-  				<p class="bold"> Environments </p>
-  				<p> - Unity, Android Studio, GameMaker Studio </p>
+          <a class=divider-s></a>
 
-  				<p class="bold"> Tools </p>
-  				<p> - Git, RESTful APIs </p>
-
-  				<p class="bold"> Libraries/Frameworks </p>
-  				<p> - Android, Django, AWT, OkHttp </p>
+  				<p class="bold"> Tools, Libraries, Frameworks </p>
+  				<p> Git, RESTful APIs, Android, Django, AWT, OkHttp </p>
 
       	</div>
 
       	<a class=divider-s></a>
 
-        <a class="collapse-button"> School </a>
-
+        <a class="collapse-button"> Education </a>
         <div class="collapse-content">
 
-        	<p> <span class="bold"> San Francisco State University </span> <span class="small">(Fall 2017 - Expected Spring 2019)</span></p>
-        	<p> - Currently pursuing a Bachelor's in Computer Science.</p>
-        	<p> - Taking upper division and elective courses.</p>
-      	
-        	<p> <span class="bold">City College of San Francisco</span> <span class="small">(Spring 2016 - Spring 2017)</span></p>
-        	<p> - Took general education and lower division Computer Science courses.</p>
+        	<p> <span class="bold"> San Francisco State University </span> <span class="small"> San Francisco, CA </span></p>
+        	<p> Junior Computer Science Major. Relevant coursework includes Data Structures & Algorithms, Computer Architecture w/Assembly Language, Programming Methodology, Software Development, Analysis of Algorithms. </p>
+          <p> Expected date of graduation: Fall 2019 </p>
+          <p> GPA: 3.43 </p>
+
+      	  <a class=divider-s></a>
+
+        	<p> <span class="bold"> San Jose State University </span> <span class="small"> San Jose, CA </span></p>
+        	<p> Freshman Aerospace Engineering Major. Relevant coursework included Intro to Engineering, Mathematics, General Physics.</p>
 
         </div>
 
-     	 	<a class=divider-s></a>
+      </div>
 
-        <a class="collapse-button"> Relevant Coursework </a>
+      <!-- Contact -->
+      <a class=divider-l name="contact"></a>
+      <p class="subtitle-text"> Contact Me </p>
+      <a class="divider-s"></a>
 
-        <div class="collapse-content">
-      		<p> - Data Structures & Algorithms </p>
-      		<p> - Computer Architecture w/ Assembly Language </p>
-      		<p> - Programming Methodology </p>
-        </div>
+      <div class=collapse-div>
+        <p> Email: <a href="mailto:foxjonathanp@gmail.com"> FoxJonathanP@gmail.com </a> </p>
+        <p> LinkedIn: <a href="https://www.linkedin.com/in/jonathan-fox-cs/"> Here </a> </p>
+        <p> GitHub: <a href="https://github.com/fishwash"> FishWash </a> </p>
+      </div>
+
+      <a class=divider-l></a>
+      <a class=divider-l></a>
+      <a class=divider-l></a>
+      <a class=divider-l></a>
+      <a class=divider-l></a>
+      <a class=divider-l></a>
+      <a class=divider-l></a>
+      <a class=divider-l></a>
 
     </div>
 
-    <a class=divider-l></a>
+
+
+    
 
 	</body>
 

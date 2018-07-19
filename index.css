@@ -11,6 +11,7 @@ body {
 
 }
 
+/*Main*/
 .main {
 	margin: auto;
 	background-color: white;
@@ -35,6 +36,56 @@ body {
 	padding: 10px 20px 10px 20px;
 }
 .main > div > * {
+}
+
+/*Nav Bar*/
+.navbar {
+	overflow: hidden;
+	padding: 8px;
+	background-color: #444;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+.navbar-button {
+	display: inline-block;
+	padding: 8px;
+	background-color: orange;
+	border-radius: 8px;
+	border: 4px solid #444;
+	cursor: pointer;
+	color: white;
+	text-align: center;
+  text-decoration: none;
+	font-size: 125%;
+}
+.navbar-button:hover {
+	background-color: #ffaf1a;
+}
+
+/* Title Stuff */
+.title-image {
+	display: block;
+	margin: auto;
+	border-radius: 50%;
+	border: 1px solid #000000;
+	max-width: 40%;
+}
+.title-text {
+	font-size: 250%;
+	text-align: center;
+	margin: auto;
+}
+.title-subtext {
+	font-size: 175%;
+	margin: auto;
+}
+
+.subtitle-text {
+	font-size: 225%;
+	text-align: center;
+	margin: auto;
 }
 
 /* Dividers */
@@ -88,29 +139,6 @@ img {
 	display:block;
 	margin: 10px 0px 10px 0px;
 	width: 100%;
-}
-
-/* Title Stuff */
-.title-image {
-	display: block;
-	margin: auto;
-	/*border-radius: 50%;*/
-	max-width: 30%;
-}
-.title-text {
-	font-size: 250%;
-	text-align: center;
-	margin: auto;
-}
-.title-subtext {
-	font-size: 175%;
-	margin: auto;
-}
-
-.subtitle-text {
-	font-size: 225%;
-	text-align: center;
-	margin: auto;
 }
 
 p {
