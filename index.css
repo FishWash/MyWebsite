@@ -38,6 +38,10 @@ body {
 .main > div > * {
 }
 
+img {
+	max-width: 100%;
+}
+
 /*Nav Bar*/
 .navbar {
 	overflow: hidden;
