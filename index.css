@@ -41,6 +41,9 @@ body {
 img {
 	max-width: 100%;
 }
+iframe {
+	width: 100%;
+}
 
 /*Nav Bar*/
 .navbar {
@@ -80,6 +83,7 @@ img {
 	font-size: 250%;
 	text-align: center;
 	margin: auto;
+	font-weight: bold;
 }
 .title-subtext {
 	font-size: 175%;
@@ -90,6 +94,7 @@ img {
 	font-size: 225%;
 	text-align: center;
 	margin: auto;
+	font-weight: bold;
 }
 
 .peeking-duck {
@@ -123,6 +128,7 @@ img {
 	color: white;
 	text-align: center;
 	font-size: 150%;
+	font-weight: bold;
 }
 .collapse-button:hover {
 	background-color: #ffaf1a;
@@ -147,6 +153,10 @@ img {
 }
 
 p {
+	font-size: 125%;
+	margin: auto;
+}
+a {
 	font-size: 125%;
 	margin: auto;
 }
