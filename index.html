@@ -1,215 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-  	<title> J. Fox </title>
+<head> 
+  <title>Welcome!</title>
+  <!-- Link normalize.css -->
+  <link rel="stylesheet" type="text/css" href="normalize.css">
+  <!-- Link Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <!-- Link Font -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+</head>
 
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<body>
+  <div class="navbar">
+    <!-- Title button -->
+    <a class="titlebtn" href="#">Jonathan Fox</a>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Spacer -->
+    <div style="flex-grow: 1"></div>
 
-    <script>
-      $(document).ready(function() {
-        $(".collapse-div .collapse-button").click(function() {
-
-          var nextele = $(this).next();
-
-          if (nextele.css("display") == "none") {
-            nextele.show("fast");
-          }
-          else {
-            nextele.hide("fast");
-          }
-
-        })
-      })
-    </script> 
-  </head>
-
-  <body>
-
-    <a class="divider-l"></a>
-
-    <!-- Nav Bar -->
-    <div class="navbar">
-      <a class="navbar-button" href="#title">Title</a>
-      <a class="navbar-button" href="#experience">Experience</a>
-      <a class="navbar-button" href="#projects">Projects</a>
-      <a class="navbar-button" href="#skills-education">Skills & Education</a>
-      <a class="navbar-button" href="#contact"> Contact Me </a>
+    <!-- navbar buttons -->
+    <div class="dropdown">
+      <a class="dropbtn" href="#">Projects</a>
+      <!-- <div class="dropdown-content">
+        <a href="#">Click 1</a>
+        <a href="#">no click me</a>
+        <a href="#"> NO CLCCLC</a>
+      </div> -->
     </div>
-
-    <!-- Main -->
-    <div class="main">
-
-      <a class="divider-l" name="title"></a>
-
-      <p class="title-text"> Hey, I'm Jonathan Fox! </p>
-      <a class="divider-s"></a>
-      <!-- <img src="me.png" class="title-image"> -->
-      <img src=professional-pic-2-square.jpg class="title-image">
-      <a class="divider-m"></a>
-      <p class="title-subtext"> I'm a programmer. I make apps, games, and other stuff. Always trying to improve. Keep reading to learn more! </p>
-
-      <!-- Projects -->
-      <a class=divider-l name="projects"></a>
-      <p class="subtitle-text"> Projects </p>
-      <a class="divider-s"></a>
-
-      <div class=collapse-div>
-
-        <!-- Galactic Mail -->
-        <a class="collapse-button"> Tank Game (Java) </a>
-        <div class="collapse-content">
-          <iframe height="315"
-            src="https://www.youtube.com/embed/C16IQBU7it4">
-          </iframe>          
-          <div class="divider-s"></div>
-          <p> <b>Tank Game</b> is a 2-player tank shooter, where two people can play against each other via local multiplayer. Destroy your opponent's tank by damaging it with weapons, and deplete all of your opponent's lives to win the game. Collect weapons and powerups to help you win! </p>
-          <div class="divider-s"></div>
-          <p> A friend and I built Tank Game in Java using the Swing framework. </p>
-          <div class="divider-s"></div>
-          <p> We built it as practice in writing object-oriented code, designing classes in a way that kept them organized, encapsulated, and reusable. This allowed us to code efficiently and reuse code in other games. </p>
-          <div class="divider-s"></div>
-          <p> I wanted Tank Game to be a fun game, in addition to being good practice in programming. So I added destructible walls, weapons, and powerups to add some diversity to the game. The map is designed to offer multiple options for player strategy. Additionally, player experience is important to me, so I made sure to make UI simple and quick to give as much control to the players as possible. </p>
-          <div class="divider-s"></div>
-          <p> Check out the GitHub <a href="https://github.com/FishWash/team-j-java-games/tree/master/src/tankGame" target="_blank">here</a>! </p>
-        </div>
-
-        <!-- Galactic Mail -->
-        <div class="divider-s"></div>
-        <a class="collapse-button"> Galactic Mail (Java) </a>
-        <div class="collapse-content">
-          <iframe height="315"
-            src="https://www.youtube.com/embed/uIgtczAg4bg">
-          </iframe>
-          <div class="divider-s"></div>
-          <p> <b>Galactic Mail</b> is a 1-player game. Earn points by launching your rocket and landing on other moons. Your rocket is safe while docked on a moon, but when you launch, you'll have less control of your rocket and you'll have to avoid asteroids. Land on all the moons to continue to the next level. Try to beat the high score!  </p>
-          <div class="divider-s"></div>
-          <p> A friend and I built Galactic Mail in Java using the Swing framework. </p>
-          <div class="divider-s"></div>
-          <p> Galactic Mail was made using some basic elements from Tank Game, allowing us to reuse code for object movement, collision detection, vector logic, game clock, screen-drawing logic, and controls. </p> 
-          <div class="divider-s"></div>
-          <p> Like Tank Game, I wanted Galactic Mail to be fun as well. It was important to me that the controls should "feel" like the player has control of the rocket, but not so much that it makes the game easy. Making momentum-based movement for the rocket allowed for that, and makes game play satisfying once the player has gotten used to it. Galactic Mail continues endlessly, so there's no way to "win" the game; instead, I implemented a high score screen like in old arcade games, which makes the goal of the game to beat your last high score. </p>
-          <div class="divider-s"></div>
-          <p> Check out the GitHub <a href="https://github.com/FishWash/team-j-java-games/tree/master/src/galacticMail" target="_blank">here</a>! </p>
-        </div>
-
-        <!-- Duckoman -->
-        <div class="divider-s"></div>
-        <a class="collapse-button"> Duckoman (Unity) </a>
-        <div class="collapse-content">
-        	<img src="duckomanss.png" alt="Duckoman Boss Fight">
-          <p> Duckoman is a Unity game that I built in Fall 2017. It's a platformer with easy-to-understand mechanics, featuring enemies, music, sound effects, better physics and a boss fight. </p>
-          <p> Play the game <a href="duckoman.html" target="_blank">here</a>! </p>
-          <p> Visit the GitHub <a href="https://github.com/FishWash/DuckomanCode" target="_blank">here</a>! </p>
-        </div>
-
-        <!-- Skate Duck -->
-        <div class="divider-s"></div>
-        <a class="collapse-button"> Skate Duck (GameMaker) </a>
-        <div class="collapse-content">
-        	<img src="skateduckss.png" alt="Skate Duck Debugging">
-          <p> Skate Duck is the first game I built. It features pixel art graphics, 8-bit chiptune music, and simple physics. </p>
-   				<p> Visit the GitHub <a href="https://github.com/FishWash/SkateDuck" target="_blank">here</a>! </p>
-        </div>
-
+    <div class="dropdown">
+      <a class="dropbtn">About Me</a>
+      <div class="dropdown-content">
+        <a href="#">Experience</a>
+        <a href="#">Education</a>
+        <a href="#">Skills</a>
       </div>
-
-      <!-- Experience -->
-      <a class=divider-l name="experience"></a>
-      <p class="subtitle-text"> Experience </p>
-      <a class=divider-s></a>
-
-      <div class=collapse-div>
-        <a class="collapse-button"> Internships </a>
-        <div class="collapse-content">
-          <p> 
-            <a class="bold"> Olixus Inc. </a> 
-            <a class= "small">(Summer 2017) </a>
-          </p>
-          <p>Worked with a team of five other people on the JITS app, which provides just-in-time services for small businesses and customers</p>
-          <p>Experienced working on a project with a team, communicating ideas, and collaborating on work with other group members</p>
-          <p>Used OkHttp to connect the Android app to an internal RESTful API, and built the login screen to handle user info and connect with the JITS server</p>
-
-        </div>
-      </div>
-
-      <!-- Twitter Timeline -->
-      <!--<div>
-        <a class="twitter-timeline" href="https://twitter.com/jfox6cs?ref_src=twsrc%5Etfw" data-height="400"> Tweets by jfox6cs </a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-      </div>-->
-
-
-      <!-- Education -->
-      <a class=divider-l name="skills-education"></a>
-      <p class="subtitle-text"> Skills & Education </p>
-      <a class=divider-s></a>
-
-      <div class=collapse-div>
-
-      	<a class="collapse-button"> Skills </a>
-      	<div class="collapse-content">	
-
-  				<p class="bold"> Languages and Environments </p>
-  				<p> Java, C#, C++, Python, HTML, CSS, Unity, Android Studio, GameMaker Studio </p>
-
-          <a class=divider-s></a>
-
-  				<p class="bold"> Tools, Libraries, Frameworks </p>
-  				<p> Git, RESTful APIs, Android, Django, AWT, OkHttp </p>
-
-      	</div>
-
-      	<a class=divider-s></a>
-
-        <a class="collapse-button"> Education </a>
-        <div class="collapse-content">
-
-        	<p> <span class="bold"> San Francisco State University </span> <span class="small"> San Francisco, CA </span></p>
-        	<p> Junior Computer Science Major. Relevant coursework includes Data Structures & Algorithms, Computer Architecture w/Assembly Language, Programming Methodology, Software Development, Analysis of Algorithms. </p>
-          <p> Expected date of graduation: Fall 2019 </p>
-          <p> GPA: 3.5 </p>
-
-      	  <a class=divider-s></a>
-
-        	<p> <span class="bold"> San Jose State University </span> <span class="small"> San Jose, CA </span></p>
-        	<p> Freshman Aerospace Engineering Major. Relevant coursework included Intro to Engineering, Mathematics, General Physics.</p>
-
-        </div>
-
-      </div>
-
-      <!-- Contact -->
-      <a class=divider-l name="contact"></a>
-      <p class="subtitle-text"> Contact Me </p>
-      <a class="divider-s"></a>
-
-      <div class=collapse-div>
-        <p> Email: <a href="mailto:foxjonathanp@gmail.com"> FoxJonathanP@gmail.com </a> </p>
-        <p> LinkedIn: <a href="https://www.linkedin.com/in/jonathan-fox-cs/"> Jonathan-Fox-CS </a> </p>
-        <p> GitHub: <a href="https://github.com/fishwash"> FishWash </a> </p>
-      </div>
-
-      <a class=divider-l></a>
-      <a class=divider-l></a>
-      <a class=divider-l></a>
-      <a class=divider-l></a>
-      <a class=divider-l></a>
-      <a class=divider-l></a>
-      <a class=divider-l></a>
-      <a class=divider-l></a>
-      <a class=divider-l></a>
-      <a class=divider-l></a>
-      <a class=divider-l></a>
-
-      <img src="peeking-duck.png" class="peeking-duck">
-
-
     </div>
-    
-
-	</body>
-
-</html>
+    <div class="dropdown">
+      <a class="dropbtn">Contact</a>
+      <div class="dropdown-content">
+        <a href="#">Click 1</a>
+        <a href="#">no click me</a>
+        <a href="#"> NO CLCCLC</a>
+      </div>
+    </div>
+  </div>
+</body>
