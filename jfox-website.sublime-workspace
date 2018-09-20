@@ -1,0 +1,423 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"width",
+				"width-paddleWidth"
+			],
+			[
+				"ball",
+				"ball_x"
+			],
+			[
+				"text-",
+				"text-align"
+			],
+			[
+				"inline",
+				"inline-flex"
+			],
+			[
+				"padding",
+				"padding-top"
+			],
+			[
+				"block",
+				"inline-block"
+			],
+			[
+				"operator",
+				"operatorMap"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 6670,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<!DOCTYPE html>\n\n<head>\n  <meta charset=\"utf-8\" />\n  <title>JF - Breakout!</title>\n\n  <style>\n    * {\n      padding: 0; \n      margin: 0;\n    }\n    canvas {\n      background: #000; \n      display: block; \n      margin: 0 auto;\n    }\n  </style>\n</head>\n\n<body style=\"background-color: black\">\n  <canvas id=\"gameCanvas\" width=\"480\" height=\"320\"></canvas>\n\n  <script>\n    // init canvas and ctx\n    var canvas = document.getElementById(\"gameCanvas\");\n    var ctx = canvas.getContext(\"2d\");\n\n    // init controls\n    var leftPressed = false;\n    var rightPressed = false;\n    var aPressed = false;\n    var dPressed = false;\n\n    // init ball\n    var ballRadius = 10;\n    var ballX = canvas.width/2;\n    var ballY = canvas.height-30;\n    var ballDx = 2;\n    var ballDy = -2;\n    drawBall();\n\n    // init paddle\n    var paddleHeight = 10;\n    var paddleWidth = 75;\n    var paddleX = (canvas.width-paddleWidth)/2;\n    drawPaddle();\n\n    // init bricks\n    var brickRowCount = 3;\n    var brickColumnCount = 5;\n    var brickWidth = 75;\n    var brickHeight = 20;\n    var brickPadding = 10;\n    var brickOffsetTop = 30;\n    var brickOffsetLeft = 30;\n    var bricks = [];\n\n    // init brick colors\n    var brickColors = [];\n    brickColors[0] = \"#30dd64\"; //gren\n    brickColors[1] = \"#f42944\"; //punk\n    brickColors[2] = \"#418fd3\"; //blubp\n    brickColors[3] = \"#FFBC3F\"; //yeller\n    brickColors[4] = \"#9226E0\"; //purp\n\n    var gameOver = true;\n    ctx.fillStyle = \"#fff\"\n    ctx.font = \"20px Arial\";\n    ctx.fillText(\"(Press Space to start)\", 150, 190);\n\n\n    function initialize() {\n      ballX = canvas.width/2;\n      ballY = canvas.height-30;\n      ballDx = 2;\n      ballDy = -2;\n      paddleX = (canvas.width-paddleWidth)/2;\n      bricks = [];\n      for (var c=0; c<brickColumnCount; c++) {\n        bricks[c] = [];\n        for (var r=0; r<brickRowCount; r++) {\n          bricks[c][r] = {\n            x: brickOffsetLeft + (c*(brickWidth+brickPadding)), \n            y: brickOffsetTop + (r*(brickHeight+brickPadding)),\n            alive: true,\n            color: brickColors[Math.floor(Math.random()*brickColors.length)]\n          };\n        }\n      }\n      gameOver = false;\n    }\n\n    function drawBall() {\n      ctx.beginPath();\n      ctx.arc(ballX, ballY, ballRadius, 0, Math.PI*2);\n      ctx.fillStyle = \"#fff\";\n      ctx.fill();\n      ctx.closePath();\n    }\n\n    function drawPaddle() {\n      ctx.beginPath();\n      ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);\n      ctx.fillStyle = \"#fff\";\n      ctx.fill();\n      ctx.closePath();\n    }\n\n    function drawBricks() {\n      for (var c=0; c<brickColumnCount; c++) {\n        for (var r=0; r<brickRowCount; r++) {\n          b = bricks[c][r];\n          if (b.alive) {\n            ctx.beginPath();\n            ctx.rect(bricks[c][r].x, bricks[c][r].y, brickWidth, brickHeight);\n            ctx.fillStyle = b.color; \n            ctx.fill();\n            ctx.closePath();\n          }\n        }\n      }\n    }\n\n    function moveBall() {\n      var nextX = ballX+ballDx;\n      if (ballDx < 0 && nextX-ballRadius < 0) {\n        var wallDistance = ballX-ballRadius;\n        var overshoot = -ballDx-wallDistance;\n        ballX += -wallDistance+overshoot;\n        ballDx = -ballDx;\n      }\n      else if (ballDx > 0 && nextX+ballRadius > canvas.width) {\n        var wallDistance = canvas.width - ballX - ballRadius;\n        var overshoot = ballDx - wallDistance;\n        ballX += wallDistance - overshoot;\n        ballDx = -ballDx;\n      }\n      else {\n        ballX += ballDx;\n      }\n\n      var next_y = ballY+ballDy;\n      if (ballDy < 0 && next_y-ballRadius < 0) {\n        var wallDistance = ballY - ballRadius;\n        var overshoot = -ballDy - wallDistance;\n        ballY += -wallDistance + overshoot;\n        ballDy = -ballDy;\n      }\n      else if (ballDy > 0 \n        && next_y+ballRadius > canvas.height-paddleHeight\n        && ballX+ballRadius >= paddleX \n        && ballX-ballRadius <= paddleX+paddleWidth\n        && gameOver == false) {\n        var paddleDistance = canvas.height-paddleHeight - ballY - ballRadius;\n        var overshoot = ballDy - paddleDistance;\n        ballY += paddleDistance - overshoot;\n        ballDy = -ballDy;\n        }\n      else {\n        ballY += ballDy;\n      }\n\n      if (ballY+ballRadius > canvas.height) {\n        gameOver = true;\n        ctx.fillStyle = \"#fff\"\n        ctx.font = \"30px Arial\";\n        ctx.fillText(\"GAME OVER\",145,160);\n        ctx.font = \"20px Arial\";\n        ctx.fillText(\"(Press Space to restart)\", 140, 190);\n      }\n    }\n\n    function movePaddle() {\n      var input = 0;\n      if (rightPressed || dPressed) {\n        input += 1;\n      }\n      if (leftPressed || aPressed) {\n        input -= 1;\n      }\n      paddleDx = input*7;\n      nextX = paddleX + paddleDx;\n      if (nextX < 0) {\n        paddleX = 0;\n      }\n      else if (nextX > canvas.width-paddleWidth) {\n        paddleX = canvas.width-paddleWidth;\n      }\n      else {\n        paddleX = nextX;\n      }\n    }\n\n    function checkBrickCollision() {\n      var brickFound = false;\n      for (var c=0; c<brickColumnCount; c++) {\n        for (var r=0; r<brickRowCount; r++) {\n          var b = bricks[c][r];\n          if (b.alive) {\n            brickFound = true;\n            if (ballX+ballRadius >= b.x \n              && ballX-ballRadius <= b.x+brickWidth\n              && ballY+ballRadius >= b.y\n              && ballY-ballRadius <= b.y+brickHeight) {\n              ballY = -ballY;\n              b.alive = false;\n            }\n          } \n        }\n      }\n\n      if (!brickFound) {\n        gameOver = true;\n        ctx.fillStyle = \"#fff\";\n        ctx.font = \"30px Arial\";\n        ctx.fillText(\"You Win!\",180,160);\n        ctx.font = \"20px Arial\";\n        ctx.fillText(\"(Press Space to restart)\", 140, 190);\n      }\n    }\n\n    setInterval(update, 6);\n    function update() {\n      // draw everything\n      if (!gameOver) {\n        ctx.clearRect(0, 0, canvas.width, canvas.height);\n        drawBricks();\n        drawPaddle();\n        drawBall();\n\n        movePaddle();\n        moveBall();\n        checkBrickCollision();\n      }\n    }\n\n    document.addEventListener(\"keydown\", keyDownHandler, false);\n    function keyDownHandler(e) {\n      switch (e.keyCode) {\n        case 65:\n          aPressed = true;\n          break;\n        case 68:\n          dPressed = true;\n          break;\n        case 37:\n          leftPressed = true;\n          break;\n        case 39:\n          rightPressed = true;\n          break;\n        case 32:\n          if (gameOver) initialize();\n          break;\n      }\n    }\n\n    document.addEventListener(\"keyup\", keyUpHandler, false);\n    function keyUpHandler(e) {\n      switch (e.keyCode) {\n        case 65:\n          aPressed = false;\n          break;\n        case 68:\n          dPressed = false;\n          break;\n        case 37:\n          leftPressed = false;\n          break;\n        case 39:\n          rightPressed = false;\n          break;\n      }\n    }\n  </script>\n</body>",
+			"file": "WebApps/breakout.html",
+			"file_size": 7266,
+			"file_write_time": 131817218914620869,
+			"settings":
+			{
+				"buffer_size": 6991,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "WebApps/duckoman2/duckoman2.html",
+			"settings":
+			{
+				"buffer_size": 1799,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.css",
+			"settings":
+			{
+				"buffer_size": 1519,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Jonathan/Documents/_GitHub/jfox-website"
+	],
+	"file_history":
+	[
+		"/C/Users/Jonathan/Documents/_GitHub/jfox-website/WebApps/duckoman2/duckoman2.html",
+		"/C/Users/Jonathan/Documents/_GitHub/jfox-website/WebApps/duckoman2.html",
+		"/C/Users/Jonathan/Documents/_GitHub/jfox-website/WebApps/breakout.html",
+		"/C/Users/Jonathan/Documents/_GitHub/jfox-website/oldindex.html",
+		"/C/Users/Jonathan/Documents/_GitHub/jfox-website/oldindex.css",
+		"/C/Users/Jonathan/Documents/_GitHub/jfox-website/smooth-scroll.js",
+		"/C/Users/Jonathan/Documents/_GitHub/jfox-website/normalize.css",
+		"/C/Users/Jonathan/Documents/_2018 Fall/RELS 300/website1.html",
+		"/C/Users/Jonathan/Documents/_GitHub/jfox-website/index.html",
+		"/C/Users/Jonathan/Documents/_2018 Fall/CSC 415/CSC 415 Notes 2018-09-04",
+		"/C/Users/Jonathan/Documents/_2018 Fall/ERTH 310/ERTH 310 Notes - 2018-09-05",
+		"/C/Users/Jonathan/Documents/_2018 Fall/CSC 600/CSC 600 Notes 2018-09-05",
+		"/C/Users/Jonathan/Documents/_2018 Fall/RELS 300/RELS 300 Notes 2018-08-30",
+		"/C/Users/Jonathan/Documents/_2018 Fall/RELS 300/RELS 300 Notes 2018-09-04",
+		"/C/Users/Jonathan/Documents/_2018 Fall/RELS 300/RELS 300 Notes 2018-09-06",
+		"/C/Users/Jonathan/Documents/_2018 Fall/CSC 600/CSC 600 Notes 2018-8-29",
+		"/C/Users/Jonathan/Documents/_2018 Fall/ERTH 310/ERTH 310 Notes - 2013-8-28",
+		"/C/Users/Jonathan/Documents/_2018 Fall/CSC 415/CSC 415 Notes 2018-08-29",
+		"/C/Users/Jonathan/Documents/_2018 Fall/CSC 656/CSC 656 Notes 2018-08-27",
+		"/C/Users/Jonathan/Documents/_GitHub/team-j-java-games/src/tankGame/README.md",
+		"/C/Users/Jonathan/Documents/_GitHub/team-j-java-games/src/galacticMail/README.md",
+		"/C/Users/Jonathan/Documents/_GitHub/team-j-java-games/README.md",
+		"/C/Users/Jonathan/Documents/_GitHub/jfox-website/index.css",
+		"/C/Users/Jonathan/Documents/_GitHub/jfox-website/TermProjectGames/tankGame.html",
+		"/C/Users/Jonathan/Documents/_GitHub/_Unity/TopDown/Assets/Scripts/Utility/PlayerController.cs",
+		"/C/Users/Jonathan/Documents/_GitHub/_Unity/TopDown/Assets/Scripts/Utility/PointInput.cs",
+		"/C/Users/Jonathan/Documents/_GitHub/jfox-website/TermProjectGames/termProjectGames.html",
+		"/C/Users/Jonathan/Documents/Notes/GradientFinder.java",
+		"/C/Users/Jonathan/Documents/Node/hello.js",
+		"/C/Users/Jonathan/Documents/Notes/EyeWizard TODO",
+		"/C/Users/Jonathan/Documents/_GitHub/_CSC 413/assignment-3-FishWash/sample_files/myTestFile.x",
+		"/C/Users/Jonathan/Documents/WindowsPowerShell/posh-git.src.ps1",
+		"/C/Users/Jonathan/Documents/WindowsPowerShell/posh-git-profile.ps1",
+		"/C/Users/Jonathan/Documents/Notes/Season 8 Runes Guide",
+		"/C/Users/Jonathan/Downloads/nejmra1402309.enw",
+		"/C/Users/Jonathan/Documents/) GitHub/) CSC 413/assignment-3-FishWash/sample_files/myTestFile.x",
+		"/C/Users/Jonathan/Documents/GitHub/CSC 413/assignment-3-FishWash/sample_files/myTestFile.x",
+		"/C/Users/Jonathan/Documents/tools/android.bat",
+		"/C/Users/Jonathan/Downloads/sdk-tools-windows-3859397/tools/android.bat",
+		"/C/Users/Jonathan/Downloads/sdk-tools-windows-3859397/tools/bin/sdkmanager.bat",
+		"/C/Program Files/Android/sdk/tools/templates/gradle/wrapper/gradle/wrapper/gradle-wrapper.properties",
+		"/C/Users/Jonathan/Documents/GitHub/lexer-FishWash/sample_files/simple.x",
+		"/C/Users/Jonathan/Documents/GitHub/Unity/AdventurersArena/.collabignore",
+		"/C/Users/Jonathan/Desktop/Standard Assets/CrossPlatformInput/Scripts/Joystick.cs",
+		"/C/Users/Jonathan/Documents/GitHub/lexer-FishWash/sample_files/ifsort.java",
+		"/C/Users/Jonathan/Documents/GitHub/assignment-1-expression-evaluator-and-gui-FishWash/Evaluator.java",
+		"/C/Users/Jonathan/Documents/GitHub/assignment-1-expression-evaluator-and-gui-FishWash/EvaluatorTester.java",
+		"/C/Users/Jonathan/Documents/Jonathan Custom.json",
+		"/C/Users/Jonathan/Documents/GitHub/assignment-1-expression-evaluator-and-gui-FishWash/Operator.java",
+		"/C/Users/Jonathan/Documents/GitHub/assignment-1-expression-evaluator-and-gui-FishWash/Operand.java",
+		"/C/Users/Jonathan/Documents/GitHub/assignment-1-expression-evaluator-and-gui-FishWash/SubtractionOperator.java",
+		"/C/Users/Jonathan/Desktop/assignment-1-original/Operand.java",
+		"/C/Users/Jonathan/Desktop/assignment-1-expression-evaluator-and-gui-FishWash/Operator.java",
+		"/C/Users/Jonathan/Desktop/assignment-1-expression-evaluator-and-gui-FishWash/Operand.java",
+		"/C/Users/Jonathan/Documents/CSC 413/CSC413 2018-2-10",
+		"/C/Users/Jonathan/Documents/GitHub/assignment-1-expression-evaluator-and-gui-FishWash/.gitignore",
+		"/C/Users/Jonathan/Desktop/CEFLEPCS.txt",
+		"/C/Users/Jonathan/Documents/WindowsPowerShell/bootstrap-git.profile.ps1",
+		"/C/Users/Jonathan/Documents/WindowsPowerShell/transcript.src.ps1",
+		"/C/Users/Jonathan/Documents/GitHub/Bulk-Crap-Uninstaller/CODE_OF_CONDUCT.md",
+		"/C/Users/Jonathan/Documents/GitHub/Bulk-Crap-Uninstaller/CONTRIBUTING.md"
+	],
+	"find":
+	{
+		"height": 37.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"block",
+			"ball_dy",
+			"ball_dx",
+			"ball_y",
+			"ball_x",
+			"ball_radius"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6670,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4153,
+								4153
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1985.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "WebApps/breakout.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6991,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2386,
+								2386
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 772.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "WebApps/duckoman2/duckoman2.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1799,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1717,
+								1717
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 571.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "index.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1519,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								309,
+								309
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 328.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 37.0
+	},
+	"input":
+	{
+		"height": 37.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "jfox-website.sublime-project",
+	"replace":
+	{
+		"height": 70.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 212.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

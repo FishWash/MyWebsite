@@ -1,46 +1,53 @@
 body {
-    font-family: 'Open Sans', sans-serif;
-    color: #1d1a16;
+    font-family: 'Rubik', sans-serif;
     background-color: #a4b3c1;
-    background-image: url(hiking-bg.jpg);
+    background-image: url("hiking-bg-scr.jpg");
     background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .navbar {
-    /*background-color: #39332d;*/
     background-color: rgba(0,0,0,0.4);
     display: flex;
-    padding: 0px 16px
+    align-items: center;
+    padding: 0px 16px;
+    font-family: 'Open Sans';
+}
+
+.navbar * {
+    font-family: 'Open Sans';
 }
 
 .navbar a {
     background-color: transparent;
     text-decoration: none;
-    color: rgba(255,255,255,0.8);
     display: block;
-    padding: 16px;
     height: 100%;
+    opacity: 0.7;
 }
+.navbar a:hover {opacity: 1}
 
-.navbar a:hover {
-    color: white;
-}
-
-/*Title Button*/
-.titlebtn {
-    font-size: 1.6em;
+.title-button {
+    font-size: 1.8em;
     font-weight: 600;
+    color:white;
+    padding: 16px;
+    white-space: nowrap;
 }
-
-/* Dropdown Button */
-.dropbtn {
-    font-size: 1.2em;
+.dropdown-button {
+    font-size: 1.4em;
+    color: white;
+    padding: 16px;
 }
-
-/* Dropdown div */
-.dropdown {
-    position: relative;
-    display: inline-block;
+.contact-button {
+    font-size: 1.4em;
+    color: rgb(165, 243, 211);
+    padding: 12px;
+    margin: 4px 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    border-color: rgba(165, 243, 211);
 }
 
 /* Dropdown content (Hidden by default)*/
@@ -68,5 +75,4 @@ body {
 
 /* Show dropdown content on hover */
 .dropdown:hover .dropdown-content {display:block;}
-
-/* Change the background color of dropdown button when content is shown */
+.dropdown:hover .dropdown-button {opacity: 1;}

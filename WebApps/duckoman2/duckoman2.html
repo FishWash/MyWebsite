@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>JF - Duckoman 2</title>
+
+  <style>
+    * {
+      padding: 0; 
+      margin: 0;
+    }
+    canvas {
+      background: #335; 
+      display: block; 
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body style="background-color: black">
+  <canvas id="gameCanvas" width="480" height="320"></canvas>
+
+  <script>
+    //init canvas and context
+    var canvas = document.getElementById("gameCanvas");
+    var ctx = canvas.getContext("2d");
+
+    // init classes
+    class Sprite {
+      constructor(xOffset, yOffset) {
+        this.image = new Image();
+        this.xOffset = xOffset;
+        this.yOffset = yOffset;
+      }
+
+      setSrc(imageSrc) {
+        this.image.src = imageSrc;
+      }
+
+      draw(x, y) {
+        ctx.drawImage(this.image, x+this.xOffset, y+this.yOffset);
+      }
+    }
+
+    class Tile {
+      constructor(column, row) {
+        this.column = column;
+        this.row = row;
+        this.sprite = tileSprite;
+      }
+    }
+
+    // init sprites
+    var duckSprite = new Sprite(-24, -48);
+    duckSprite.setSrc("sprites/duck.png");
+
+    var tileSprite = new Sprite(-24, -12);
+    tileSprite.setSrc("sprites/tile.png");
+
+    // init tiles
+    var tiles = [];
+    for (var c=0; c<3; c++) {
+      tiles[c] = [];
+      for (var r=0; r<3; r++) {
+        tiles[c][r] = new Tile(c,r);
+      }
+    }
+
+    // update every frame
+    setInterval(update, 10);
+    function update() {
+      ctx.beginPath();
+      ctx.rect(85, 85, 30, 30);
+      ctx.fillStyle = "#199";
+      ctx.fill();
+      ctx.closePath();
+
+      for (var c=0; c<tiles.length; c++) {
+        for (var r=0; r<tiles[c].length; r++) {
+          tiles[c][r].sprite.draw(100 + 50*c, 100 + 27*r);
+        }
+      }
+
+      duckSprite.draw(100, 100);
+    }
+  </script>
+</body>
