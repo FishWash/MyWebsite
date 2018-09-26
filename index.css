@@ -1,9 +1,6 @@
 body {
     font-family: 'Rubik', sans-serif;
     background-color: #a4b3c1;
-    background-image: url("hiking-bg-scr.jpg");
-    background-size: 100%;
-    background-repeat: no-repeat;
 }
 
 .navbar {
