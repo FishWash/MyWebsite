@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+  <title>JF - Welcome!</title>
+  <!-- Link Bootstrap CDN -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <!-- CSS -->
+  <style>
+    body {
+      background-image: url("Images/hiking-bg-scr.jpg");
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    .big-name {
+      color: white;
+      font-size: 7vw;
+      font-family: 'Open Sans';
+      text-align: center;
+      margin-top: 12vw;
+    }
+    .subtitles {
+      color: white;
+      font-size: 3vw;
+      font-family: 'Open Sans';
+      text-align: center;
+    }
+
+    .arrow-button {
+      text-decoration: none;
+      color: black;
+      opacity: 0.7;
+      font-size: 4vw;
+      text-align: center;
+      display:block;
+      padding: 1vw;
+      margin-top: 3vw;
+    }
+    .arrow-button:hover {opacity: 1;}
+
+    .card {
+      background-color: #f4f2f0;
+      font-size: 1.3em;
+      padding: 4px 16px;
+      box-shadow: 0px 0px 16px 2px rgba(0,0,0,0.5);
+    }
+    .card h1 {
+      font-size: 2em;
+      font-family: "Open Sans";
+      text-align: center; 
+      margin-top: 3%;
+      padding: 0;
+    }
+    .card p {
+      font-size: 1.3em;
+      text-align: center;
+    }
+    .card hr {
+      display: block;
+      border-top: 2px solid black;
+      padding: 0;
+      margin: auto;
+      margin-bottom: 2%;
+      width: 20%;
+      min-width: 300px;
+    }
+    .card-inner {
+      max-width: 1000px; 
+      display: flex; 
+      flex-wrap: wrap; 
+      justify-content: center;
+      padding: 1%;
+      margin: auto;
+    }
+    .subcard {
+      width: 30%; 
+      min-width: 300px;
+      padding: 1%;
+      margin: 0.5%;
+      background-color: #eee;
+      box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.5);
+    }
+    .subcard img {
+      object-fit: cover; 
+      height: 200px; 
+      width: 300px;
+      display: block;
+      margin: auto;
+    }
+    .subcard h1 {
+      font-size: 1.2em;
+      opacity: 0.7;
+    }
+    .subcard-cover {
+      display: none;
+      float: top;
+      position: absolute;
+      background-color: rgba(0,0,0,0.2);
+      z-index: 1;
+      height: 200px;
+      width: 300px;
+    }
+    .subcard-cover p {
+      color: #eee;
+    }
+    .subcard:hover h1 {
+      opacity: 1;
+    }
+    .subcard:hover .subcard-cover{
+      display:block;
+      vertical-align: middle;
+    }
+    .link {
+      display: inline-block;
+      font-weight: bold;
+      opacity: 0.7;
+    }
+    .link:hover {
+      opacity: 1;
+    }
+
+    .contact-list img {
+      height: 30px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-bottom: 5px; 
+      image-rendering: pixelated;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <!-- navbar buttons -->
+    <a class="title-button" href="https://fishwash.github.io/jfox-website/">Jonathan Fox</a>
+
+    <!-- spacer to push other elements to right and left -->
+    <div style="flex-grow: 1"></div>
+
+    <div class="dropdown">
+      <a class="dropdown-button" href="#about">About</a>
+      <!-- <div class="dropdown-content">
+        <a href="#">Experience</a>
+        <a href="#">Education</a>
+        <a href="#">Skills</a>
+      </div> -->
+    </div>
+    <div class="dropdown"> 
+      <a class="dropdown-button" href="#projects">Projects</a>
+      <!-- <div class="dropdown-content">
+        <a href="#">Games</a>
+        <a href="#">Web Apps</a>
+      </div> -->
+    </div>
+    <a class="contact-button" href="#contact">Contact</a>
+  </div>
+
+  <!-- BIG NAME -->
+  <h1 class="big-name">Jonathan Fox</h1>
+  <hr style="width: 30%; border-top: 2px solid white;"/>
+  <h2 class="subtitles">Game Dev • Software Engineer • Web Dev • UX</h2>
+  <h2 class="subtitles">Based in SF</h2>
+  </div>
+
+  <a class="arrow-button" href="#about">▼</a>
+
+  <!-- ABOUT -->
+  <a id="about"></a>
+  <div class="card">
+    <h1>About Me</h1>
+    <hr/>
+
+    <div class="card-inner">
+      <div style="width: 20%; min-width: 250px; display: block; margin: 2%"">
+        <img src=Images/professional-pic-2-square.jpg style="width: 100%; border-radius: 50%;">
+      </div>
+      <div style="width: 40%; min-width: 500px; display: block;">
+        <p>Hi, I'm Jonathan! I'm a programmer, currently pursuing a Bachelors at San Francisco State University.</p>
+        <p>I'm fascinated with computers and what technology can do for people.</p>
+        <p>I'm especially interested in game development and all the aspects that go into it — programming, gameplay, art, and sound design.</p>
+      </div>
+    </div>
+
+    <div class="card-inner">
+      <p>For a quick summary of my experience,<br/><a href="jfox-resume.pdf" target="_blank" class="link">look at my resume.</a></p>
+    </div>
+
+    <a class="arrow-button" href="#projects">▼</a>
+  </div>
+
+  <!-- PROJECTS -->
+  <a id="projects"></a>
+  <div class="card">
+    <h1>Projects</h1>
+    <hr/>
+    <div class="card-inner">
+      <a class="subcard" href="https://github.com/FishWash/team-j-java-games/tree/master/src/tankGame" target="_blank">
+        <div class="subcard-cover"><p>Go to Page</p></div>
+        <img src="Images/tankugamu2.jpg"/>
+        <h1>Tank Game<br>(Java/Swing)</h1>
+        <!-- <p>Tank Game was built by a friend and me. Battle against a friend(or enemy) in local multiplayer! Find powerups and blow up the other player's tank!</p> -->
+      </a>
+
+      <a class="subcard" href="https://github.com/FishWash/team-j-java-games/tree/master/src/galacticMail" target="_blank">
+        <div class="subcard-cover"><p>Go to Page</p></div>
+        <img src="Images/garactic.jpg"/>
+        <h1>Galactic Mail<br>(Java/Swing)</h1>
+        <!-- <p>Galactic Mail was built by a friend and me, using base code from Tank Game. Avoid asteroids and safely deliver mail to all the moons in the galaxy! Try to beat the high score!</p> -->
+      </a>
+
+      <a class="subcard" href="https://github.com/FishWash/jfox-website" target="_blank">
+        <div class="subcard-cover"><p>Go to Page</p></div>
+        <img src="Images/jfoxwebsitess.jpg"/>
+        <h1>Personal Website<br>(HTML/CSS/JS)</h1>
+      </a>
+
+      <a class="subcard" href="https://github.com/FishWash/DuckomanCode" target="_blank">
+        <div class="subcard-cover"><p>Go to Page</p></div>
+        <img src="Images/duckomanss.png"/>
+        <h1>Duckoman<br>(Unity/C#)</h1>
+        <!-- <p>I built Duckoman as practice learning Unity. Play as Duckoman and defeat the invasion of evil robots!</p> -->
+      </a>
+
+      <a class="subcard" href="https://github.com/FishWash/SkateDuck" target="_blank">
+        <div class="subcard-cover"><p>Go to Page</p></div>
+        <img src="Images/skateduckss.png"/>
+        <h1>Skate Duck<br>(GameMaker)</h1>
+        <!-- <p>Skate Duck is the first game I built. Retro-style endless-runner fun!</p> -->
+      </a>
+    </div>
+
+    <a class="arrow-button" href="#contact">▼</a>
+  </div>
+
+  <!-- CONTACT -->
+  <a id="contact"></a>
+  <div class="card" style="background-color: #9de2c5;">
+    <h1>Contact Me</h1>
+    <hr/>
+    <div class="contact-list">
+      <p>Need a project done, or looking for a capable intern?<br>Email me at <a href="mailto:foxjonathanp@gmail.com" target="_blank" class="link"><img src="Icons/mail-icon2.png"/><b> FoxJonathanP@gmail.com</b></a> </p>
+      <p><a href="https://github.com/fishwash" target="_blank" class="link"><img src="Icons/github-icon.png"/> FishWash</a></p>
+      <p><a href="https://www.instagram.com/fish_wash/" target="_blank" class="link"><img src="Icons/insta-icon2.png"/> fish_wash</a></p>
+      <p><a href="https://www.linkedin.com/in/jonathan-fox-cs/" target="_blank" class="link"><img src="Icons/linkedin-icon.png"/> jonathan-fox-cs</a></p>
+    </div>
+    
+  </div>
+
+</body>
